@@ -68,7 +68,7 @@ namespace Wild_Life
            
             
 
-            FirebaseResponse resp1 = await client.GetAsync(@"animals/" + Year + "/" + Month + "/" + date);
+            FirebaseResponse resp1 = await client.GetAsync(@"animals/" + Year + "/" + Month + "/12" );
             Console.WriteLine();
 
             List<Animals> lstAnimals = new List<Animals>();
@@ -107,6 +107,7 @@ namespace Wild_Life
                     GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_dot);
 
                     GMapOverlay markers = new GMapOverlay("markers");
+                    marker.ToolTipText = names[i];
                     markers.Markers.Add(marker);
                     map.Overlays.Add(markers);
                 }
@@ -216,6 +217,7 @@ namespace Wild_Life
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_dot);
 
             GMapOverlay markers = new GMapOverlay("markers");
+            marker.ToolTipText = "My Current Location";
             markers.Markers.Add(marker);
             map.Overlays.Add(markers);
        }
